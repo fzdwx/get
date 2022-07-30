@@ -228,8 +228,13 @@ get msc [song name]
 ## Description
 
 ```
-download music. e.g:
-	get mc 不能说的秘密	
+download music.
+```
+## Examples
+
+```bash
+get mc 不能说的秘密
+get msc 我的天空	
 ```
 # ... time
 `get time`
