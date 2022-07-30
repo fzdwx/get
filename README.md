@@ -1,5 +1,5 @@
 <h1 align="center">get</h1>
-<p align="center">A downloader</p>
+<p align="center">This is a downloader.</p>
 
 <p align="center">
 
@@ -49,27 +49,23 @@
 
 ----
 
-This is a template CLI application, which can be used as a boilerplate for awesome CLI tools written in Go.
-This template prints the date or time to the terminal.
+This is a downloader CLI application, it can download some music or some other stuff.
 
 ## Installation
 
 Run the following command in a terminal and you're ready to go!
 
 **Windows**
-
 ```powershell
 iwr instl.sh/fzdwx/get/windows | iex
 ```
 
 **macOS**
-
 ```bash
 curl -sSL instl.sh/fzdwx/get/macos | bash
 ```
 
 **Linux**
-
 ```bash
 curl -sSL instl.sh/fzdwx/get/linux | bash
 ```
