@@ -11,8 +11,8 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "get",
-	Short: "This is a downloader.",
-	Long:  `This is a downloader CLI application, it can download some music or some other stuff.`,
+	Short: "一个下载器.",
+	Long:  `这是一个下载 "CLI" 应用程序,它可以下载一些音乐或其他一些东西.`,
 	Example: `get mc 稻香
 get clone fzdwx/get
 get date

@@ -31,8 +31,8 @@ import (
 // cloneCmd represents the git command
 var cloneCmd = &cobra.Command{
 	Use:     "clone [owner]/[repo]",
-	Example: `get git fzdwx/get`,
-	Short:   "clone github project",
+	Example: `get clone fzdwx/get`,
+	Short:   "这是一个克隆项目的子命令,目前只支持克隆github项目.",
 	Run: func(cmd *cobra.Command, args []string) {
 		if pterm.PrintDebugMessages {
 			utils.SetDebug()
