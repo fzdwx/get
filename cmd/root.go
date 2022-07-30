@@ -14,11 +14,12 @@ var rootCmd = &cobra.Command{
 	Short: "This is a downloader.",
 	Long:  `This is a downloader CLI application, it can download some music or some other stuff.`,
 	Example: `get mc 稻香
+get clone fzdwx/get
 get date
 get date --format 20060102
 get time
 get time --live`,
-	Version: "v0.0.3", // <---VERSION---> Updating this version, will also create a new GitHub release.
+	Version: "v0.0.4", // <---VERSION---> Updating this version, will also create a new GitHub release.
 	// Uncomment the following lines if your bare application has an action associated with it:
 	// RunE: func(cmd *cobra.Command, args []string) error {
 	// 	// Your code here

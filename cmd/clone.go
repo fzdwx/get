@@ -22,41 +22,35 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"github.com/fzdwx/get/pkg/msc"
-
+	"github.com/fzdwx/get/pkg/git"
+	"github.com/fzdwx/get/pkg/utils"
+	"github.com/pterm/pterm"
 	"github.com/spf13/cobra"
 )
 
-var name string
-
-// mscCmd represents the msc command
-var mscCmd = &cobra.Command{
-	Use:     "msc [song name]",
-	Aliases: []string{"mc"},
-	Short:   "download music.",
-	Long:    `this is a subcommand to download music.currently only supports NetEase Cloud platform`,
-	Example: `get mc 不能说的秘密
-get msc 我的天空	`,
+// cloneCmd represents the git command
+var cloneCmd = &cobra.Command{
+	Use:     "clone [owner]/[repo]",
+	Example: `get git fzdwx/get`,
+	Short:   "clone github project",
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) < 1 {
-			cmd.Usage()
-			return
+		if pterm.PrintDebugMessages {
+			utils.SetDebug()
 		}
 
-		msc.Download(args[0])
+		git.Clone(args[0])
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(mscCmd)
-
+	rootCmd.AddCommand(cloneCmd)
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	//mscCmd.PersistentFlags().String("n", "", "A help for foo")
+	// cloneCmd.PersistentFlags().String("foo", "", "A help for foo")
 
-	// Cobra supports local flags which will only execx when this command
+	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	//mscCmd.Flags().StringVarP(&name, "song", "s", "", "The name of the song to download")
+	// cloneCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

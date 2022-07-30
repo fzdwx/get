@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/fzdwx/get/pkg"
+	"github.com/fzdwx/get/pkg/utils"
 	"github.com/pterm/pterm"
 	"net/http"
 	"sync"
@@ -48,7 +48,7 @@ const netEasyDetailUrl = "https://music.163.com/api/song/enhance/player/url?id=%
 func newNetEasy(name string) *netEasy {
 	return &netEasy{
 		pageNum: 1,
-		name:    pkg.EncodeToUrl(name),
+		name:    utils.EncodeToUrl(name),
 	}
 }
 
@@ -59,7 +59,7 @@ func (n *netEasy) execute() ([]Songs, int, error) {
 	}
 
 	var result netEasyResponse
-	body := pkg.ReadBody(resp.Body)
+	body := utils.ReadBody(resp.Body)
 	err = json.Unmarshal(body, &result)
 	if err != nil {
 		return nil, 0, err
@@ -126,7 +126,7 @@ func (ns netEasySong) execute() (*Songs, error) {
 	}
 
 	var result netDataResponse
-	body := pkg.ReadBody(resp.Body)
+	body := utils.ReadBody(resp.Body)
 	err = json.Unmarshal(body, &result)
 	if err != nil {
 		return nil, err

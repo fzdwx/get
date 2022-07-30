@@ -2,7 +2,7 @@ package msc
 
 import (
 	"fmt"
-	"github.com/fzdwx/get/pkg"
+	"github.com/fzdwx/get/pkg/utils"
 )
 
 type (
@@ -36,5 +36,5 @@ type (
 )
 
 func (s Songs) Prompt(i int) string {
-	return fmt.Sprintf("%d. %s(%s) - %s", i, s.Name, pkg.FormatBytes(s.Size), pkg.MappingArtName(s.Artists[0].name))
+	return fmt.Sprintf("%d. %s(%s) - %s", i, s.Name, utils.FormatBytes(s.Size), utils.MappingArtName(s.Artists[0].name))
 }

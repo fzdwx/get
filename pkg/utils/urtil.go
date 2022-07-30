@@ -1,4 +1,4 @@
-package pkg
+package utils
 
 import (
 	"fmt"
@@ -6,6 +6,18 @@ import (
 	"net/url"
 	"strings"
 )
+
+var debug = false
+
+// SetDebug set env to debug
+func SetDebug() {
+	debug = true
+}
+
+// IsDebug Current env is debug?
+func IsDebug() bool {
+	return debug
+}
 
 // EncodeToUrl encode val to urlEncode
 func EncodeToUrl(val string) string {

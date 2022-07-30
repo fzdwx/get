@@ -1,8 +1,8 @@
 #!/usr/bin/env just --justfile
 
-# run application
+# execx application
 run action="":
-    go run . {{action}}
+    go execx . {{action}}
 
 update:
   go get -u
