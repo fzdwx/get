@@ -33,8 +33,8 @@ var name string
 var mscCmd = &cobra.Command{
 	Use:     "msc [song name]",
 	Aliases: []string{"mc"},
-	Short:   "download music",
-	Long:    `download music.`,
+	Short:   "download music.",
+	Long:    `this is a subcommand to download music.currently only supports NetEase Cloud platform`,
 	Example: `get mc 不能说的秘密
 get msc 我的天空	`,
 	Run: func(cmd *cobra.Command, args []string) {
