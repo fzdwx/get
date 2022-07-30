@@ -34,8 +34,9 @@ var mscCmd = &cobra.Command{
 	Use:     "msc [song name]",
 	Aliases: []string{"mc"},
 	Short:   "download music",
-	Long: `download music. e.g:
-	get mc 不能说的秘密	`,
+	Long:    `download music.`,
+	Example: `get mc 不能说的秘密
+get msc 我的天空	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			cmd.Usage()
