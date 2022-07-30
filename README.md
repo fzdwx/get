@@ -7,6 +7,10 @@
 <img src="https://img.shields.io/github/v/release/fzdwx/get?style=flat-square" alt="Latest Release">
 </a>
 
+<a style="text-decoration: none" href="https://instl.sh/stats/fzdwx/get">
+<img src="https://img.shields.io/endpoint?url=https://instl.sh/stats/fzdwx/get/badge/shields.io"  alt="instl-stats"/>
+</a>
+
 <a style="text-decoration: none" href="https://github.com/fzdwx/get/releases">
 <img src="https://img.shields.io/github/downloads/fzdwx/get/total.svg?style=flat-square" alt="Downloads">
 </a>
