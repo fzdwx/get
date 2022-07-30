@@ -18,7 +18,7 @@ get date
 get date --format 20060102
 get time
 get time --live`,
-	Version: "v0.0.2", // <---VERSION---> Updating this version, will also create a new GitHub release.
+	Version: "v0.0.3", // <---VERSION---> Updating this version, will also create a new GitHub release.
 	// Uncomment the following lines if your bare application has an action associated with it:
 	// RunE: func(cmd *cobra.Command, args []string) error {
 	// 	// Your code here
