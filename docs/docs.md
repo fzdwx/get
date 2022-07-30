@@ -14,6 +14,7 @@ This is a downloader CLI application, it can download some music or some other s
 
 ```bash
 get mc 稻香
+get clone fzdwx/get
 get date
 get date --format 20060102
 get time
@@ -30,11 +31,24 @@ get time --live
 ## Commands
 |Command|Usage|
 |-------|-----|
+|`get clone`|clone github project|
 |`get completion`|Generate the autocompletion script for the specified shell|
 |`get date`|Prints the current date.|
 |`get help`|Help about any command|
 |`get msc`|download music.|
 |`get time`|Prints the current time|
+# ... clone
+`get clone`
+
+## Usage
+> clone github project
+
+get clone [owner]/[repo]
+## Examples
+
+```bash
+get git fzdwx/get
+```
 # ... completion
 `get completion`
 
