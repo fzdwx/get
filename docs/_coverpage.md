@@ -1,9 +1,8 @@
-# cli-template
+# get
 
-> This cli template shows the date and time in the terminal
+> This is a downloader.
 
-This is a template CLI application, which can be used as a boilerplate for awesome CLI tools written in Go.
-This template prints the date or time to the terminal.
+This is a downloader CLI application, it can download some music or some other stuff.
 
 [Installation](installation.md)
 [Docs](docs.md)
