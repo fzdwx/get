@@ -1,7 +1,7 @@
-- [Installation](installation.md)
-- [Docs](docs.md)
+- [安装](installation.md)
+- [文档](docs.md)
 
 ---
 
-- [Contributing](CONTRIBUTING.md)
-- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [贡献](CONTRIBUTING.md)
+- [行为守则](CODE_OF_CONDUCT.md)
