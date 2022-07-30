@@ -1,5 +1,5 @@
 <h1 align="center">get</h1>
-<p align="center">This is a downloader.</p>
+<p align="center">一个下载器.</p>
 
 <p align="center">
 
@@ -40,16 +40,16 @@
 ----
 
 <p align="center">
-<strong><a href="https://fzdwx.github.io/get/#/installation">Installation</a></strong>
+<strong><a href="https://fzdwx.github.io/get/#/installation">安装</a></strong>
 |
-<strong><a href="https://fzdwx.github.io/get/#/docs">Documentation</a></strong>
+<strong><a href="https://fzdwx.github.io/get/#/docs">文档</a></strong>
 |
-<strong><a href="https://fzdwx.github.io/get/#/CONTRIBUTING">Contributing</a></strong>
+<strong><a href="https://fzdwx.github.io/get/#/CONTRIBUTING">贡献</a></strong>
 </p>
 
 ----
 
-This is a downloader CLI application, it can download some music or some other stuff.
+这是一个下载 "CLI" 应用程序,它可以下载一些音乐或其他一些东西.
 
 ## 安装
 
