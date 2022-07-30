@@ -51,21 +51,42 @@
 
 This is a downloader CLI application, it can download some music or some other stuff.
 
-## Installation
+## 安装
 
-Run the following command in a terminal and you're ready to go!
+在终端中运行以下命令，您就可以开始了！
 
 **Windows**
+
 ```powershell
 iwr instl.sh/fzdwx/get/windows | iex
 ```
 
 **macOS**
+
 ```bash
 curl -sSL instl.sh/fzdwx/get/macos | bash
 ```
 
 **Linux**
+
 ```bash
 curl -sSL instl.sh/fzdwx/get/linux | bash
 ```
+
+## 下载音乐
+
+命令模板: `get mc [song name]`
+
+示例: `get mc 我的天空`
+
+![screen](https://user-images.githubusercontent.com/65269574/181920199-14fe4227-e522-4d9a-a1bb-afb3adcecfe8.gif)
+
+## Git相关命令
+
+### Clone
+
+命令模板: `get clone [owner]/[repo]`
+
+示例: `get clone fzdwx/sky`
+
+![screen](https://user-images.githubusercontent.com/65269574/181920482-c3c9ed9f-86bb-4e1a-a388-14d16a05e138.gif)

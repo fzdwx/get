@@ -1,14 +1,14 @@
 # get
 
 ## Usage
-> This is a downloader.
+> 一个下载器.
 
 get
 
 ## Description
 
 ```
-This is a downloader CLI application, it can download some music or some other stuff.
+这是一个下载 "CLI" 应用程序,它可以下载一些音乐或其他一些东西.
 ```
 ## Examples
 
@@ -31,23 +31,23 @@ get time --live
 ## Commands
 |Command|Usage|
 |-------|-----|
-|`get clone`|clone github project|
+|`get clone`|这是一个克隆项目的子命令,目前只支持克隆github项目.|
 |`get completion`|Generate the autocompletion script for the specified shell|
 |`get date`|Prints the current date.|
 |`get help`|Help about any command|
-|`get msc`|download music.|
+|`get msc`|下载音乐.|
 |`get time`|Prints the current time|
 # ... clone
 `get clone`
 
 ## Usage
-> clone github project
+> 这是一个克隆项目的子命令,目前只支持克隆github项目.
 
 get clone [owner]/[repo]
 ## Examples
 
 ```bash
-get git fzdwx/get
+get clone fzdwx/get
 ```
 # ... completion
 `get completion`
@@ -235,14 +235,14 @@ Simply type get help [path to command] for full details.
 `get msc`
 
 ## Usage
-> download music.
+> 下载音乐.
 
 get msc [song name]
 
 ## Description
 
 ```
-this is a subcommand to download music.currently only supports NetEase Cloud platform
+这是一个下载音乐的子命令,目前只支持网易云平台.
 ```
 ## Examples
 

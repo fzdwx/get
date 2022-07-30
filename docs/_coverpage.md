@@ -1,8 +1,8 @@
 # get
 
-> This is a downloader.
+> 一个下载器.
 
-This is a downloader CLI application, it can download some music or some other stuff.
+这是一个下载 "CLI" 应用程序,它可以下载一些音乐或其他一些东西.
 
 [Installation](installation.md)
 [Docs](docs.md)
