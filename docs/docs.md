@@ -33,7 +33,7 @@ get time --live
 |`get completion`|Generate the autocompletion script for the specified shell|
 |`get date`|Prints the current date.|
 |`get help`|Help about any command|
-|`get msc`|download music|
+|`get msc`|download music.|
 |`get time`|Prints the current time|
 # ... completion
 `get completion`
@@ -221,14 +221,14 @@ Simply type get help [path to command] for full details.
 `get msc`
 
 ## Usage
-> download music
+> download music.
 
 get msc [song name]
 
 ## Description
 
 ```
-download music.
+this is a subcommand to download music.currently only supports NetEase Cloud platform
 ```
 ## Examples
 
