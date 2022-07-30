@@ -1,5 +1,5 @@
-<h1 align="center">cli-template</h1>
-<p align="center">This cli template shows the date and time in the terminal</p>
+<h1 align="center">get</h1>
+<p align="center">A downloader</p>
 
 <p align="center">
 
@@ -57,16 +57,19 @@ This template prints the date or time to the terminal.
 Run the following command in a terminal and you're ready to go!
 
 **Windows**
+
 ```powershell
 iwr instl.sh/fzdwx/get/windows | iex
 ```
 
 **macOS**
+
 ```bash
 curl -sSL instl.sh/fzdwx/get/macos | bash
 ```
 
 **Linux**
+
 ```bash
 curl -sSL instl.sh/fzdwx/get/linux | bash
 ```
