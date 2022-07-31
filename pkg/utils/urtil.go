@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"github.com/pterm/pterm"
 	"io"
 	"net/http"
 	"net/url"
@@ -89,6 +90,30 @@ func ToInt(val string) int {
 		return 0
 	}
 	return i
+}
+
+var maxWidth int
+
+func init() {
+	w, _, err := pterm.GetTerminalSize()
+	if err != nil {
+		panic(err)
+	}
+	maxWidth = w
+}
+
+func DefaultTruncate(s string) string {
+	return Truncate(s, maxWidth-5)
+}
+
+func Truncate(s string, size int) string {
+	slen := len(s)
+	if slen < size {
+		return s
+	}
+	sprintf := fmt.Sprintf("%s", s[:size])
+	return sprintf
+	//return fmt.Sprintf("%s%s", s[0:size], "...")
 }
 
 func GetSize(url string) int64 {

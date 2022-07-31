@@ -55,7 +55,7 @@ const (
 )
 
 func (s Songs) Prompt(i int) string {
-	return fmt.Sprintf("%d. %s(%s) - %s", i, s.Name, utils.FormatBytes(s.Size), utils.MappingArtName(s.Artists[0].name))
+	return utils.DefaultTruncate(fmt.Sprintf("%d. %s(%s) - %s", i, s.Name, utils.FormatBytes(s.Size), utils.MappingArtName(s.Artists[0].name)))
 }
 
 func collect(mappers []SongsMapper) []Songs {
