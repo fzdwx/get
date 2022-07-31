@@ -271,4 +271,4 @@ You can print a live clock with the '--live' flag!
 
 
 ---
-> **Documentation automatically generated with [PTerm](https://github.com/pterm/cli-template) on 30 July 2022**
+> **Documentation automatically generated with [PTerm](https://github.com/pterm/cli-template) on 31 July 2022**
