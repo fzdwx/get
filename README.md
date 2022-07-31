@@ -117,3 +117,6 @@ Flag:
 示例: `get clone fzdwx/sky`
 
 ![screen](https://user-images.githubusercontent.com/65269574/181920482-c3c9ed9f-86bb-4e1a-a388-14d16a05e138.gif)
+
+---
+**仅供个人学习使用**
