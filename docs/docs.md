@@ -33,10 +33,8 @@ get time --live
 |-------|-----|
 |`get clone`|这是一个克隆项目的子命令,目前只支持克隆github项目.|
 |`get completion`|Generate the autocompletion script for the specified shell|
-|`get date`|Prints the current date.|
 |`get help`|Help about any command|
 |`get msc`|下载音乐.|
-|`get time`|Prints the current time|
 # ... clone
 `get clone`
 
@@ -205,18 +203,6 @@ You will need to start a new shell for this setup to take effect.
 |Flag|Usage|
 |----|-----|
 |`--no-descriptions`|disable completion descriptions|
-# ... date
-`get date`
-
-## Usage
-> Prints the current date.
-
-get date
-
-## Flags
-|Flag|Usage|
-|----|-----|
-|`-f, --format string`|specify a custom date format (default "02 Jan 06")|
 # ... help
 `get help`
 
@@ -242,32 +228,22 @@ get msc [song name]
 ## Description
 
 ```
-这是一个下载音乐的子命令,目前只支持网易云平台.
+这是一个下载音乐的子命令,目前只支持酷我以及网易云平台,默认使用酷我.
 ```
 ## Examples
 
 ```bash
 get mc 不能说的秘密
-get msc 我的天空	
-```
-# ... time
-`get time`
-
-## Usage
-> Prints the current time
-
-get time
-
-## Description
-
-```
-You can print a live clock with the '--live' flag!
+get msc 我的天空
+get msc 平凡之路 -w # 使用网易云
+get msc 七里香 -k   # 酷我
 ```
 
 ## Flags
 |Flag|Usage|
 |----|-----|
-|`-l, --live`|live output|
+|`-k, --kuwo`|[默认]使用酷我平台下载音乐 (default true)|
+|`-w, --neteasy`|使用网易云平台下载音乐|
 
 
 ---
