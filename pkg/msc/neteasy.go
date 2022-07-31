@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/fzdwx/get/pkg/utils"
-	"github.com/pterm/pterm"
 	"net/http"
 	"sync"
+
+	"github.com/fzdwx/get/pkg/utils"
+	"github.com/pterm/pterm"
 )
 
 type (
@@ -42,8 +43,10 @@ type (
 	}
 )
 
-const netEasyUrl = "https://music.163.com/api/search/get/web?s=%s&type=1&limit=20&offset=%d"
-const netEasyDetailUrl = "https://music.163.com/api/song/enhance/player/url?id=%d&ids=[%d]&br=3200000"
+const (
+	netEasyUrl       = "https://music.163.com/api/search/get/web?s=%s&type=1&limit=20&offset=%d"
+	netEasyDetailUrl = "https://music.163.com/api/song/enhance/player/url?id=%d&ids=[%d]&br=3200000"
+)
 
 func newNetEasy(name string) *netEasy {
 	return &netEasy{
@@ -74,7 +77,6 @@ func (n *netEasy) execute() ([]Songs, int, error) {
 		for i := range result.Result.Songs {
 			go func(song netEasySong) {
 				mscSongs, err := song.execute()
-
 				if err != nil {
 					wg.Done()
 					pterm.Error.Printfln("download %s fail", song.Name)

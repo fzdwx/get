@@ -2,12 +2,13 @@ package msc
 
 import (
 	"fmt"
-	"github.com/fzdwx/get/pkg/ptermx"
-	"github.com/fzdwx/get/pkg/utils"
-	"github.com/pterm/pterm"
 	"io"
 	"net/http"
 	"os"
+
+	"github.com/fzdwx/get/pkg/ptermx"
+	"github.com/fzdwx/get/pkg/utils"
+	"github.com/pterm/pterm"
 )
 
 // Download music
@@ -47,7 +48,7 @@ func process(s Songs) error {
 	}
 	defer resp.Body.Close()
 
-	file, err := os.OpenFile(fmt.Sprintf("%s.%s", utils.NormalizeFileName(s.Name), s.EncodeType), os.O_CREATE|os.O_WRONLY, 777)
+	file, err := os.OpenFile(fmt.Sprintf("%s.%s", utils.NormalizeFileName(s.Name), s.EncodeType), os.O_CREATE|os.O_WRONLY, 0o777)
 	if err != nil {
 		return err
 	}
