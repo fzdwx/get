@@ -12,11 +12,11 @@ import (
 )
 
 // Download music
-func Download(name string) {
-	easy := newNetEasy(name)
+func Download(config DownloadConfig) {
+	request := getRequestFunc(config.Platform)(config.Name)
 
 	spinnerInfo, _ := pterm.DefaultSpinner.Start("获取歌曲列表...")
-	songs, songsCount, err := easy.execute()
+	songs, songsCount, err := request.Execute()
 	if err != nil {
 		spinnerInfo.Fail(err.Error())
 		return
@@ -41,6 +41,15 @@ func Download(name string) {
 	process(song)
 }
 
+func getRequestFunc(p Platform) func(name string) Request {
+	switch p {
+	case NetEasyP:
+		return newNetEasy
+	default:
+		return newKuWo
+	}
+}
+
 func process(s Songs) error {
 	resp, err := http.Get(s.DownloadUrl)
 	if err != nil {
@@ -48,7 +57,7 @@ func process(s Songs) error {
 	}
 	defer resp.Body.Close()
 
-	file, err := os.OpenFile(fmt.Sprintf("%s.%s", utils.NormalizeFileName(s.Name), s.EncodeType), os.O_CREATE|os.O_WRONLY, 0o777)
+	file, err := os.OpenFile(fmt.Sprintf("%s%s", utils.NormalizeFileName(s.Name), s.EncodeType), os.O_CREATE|os.O_WRONLY, 0o777)
 	if err != nil {
 		return err
 	}

@@ -6,7 +6,7 @@ import (
 )
 
 func Test_netEasy(t *testing.T) {
-	songs, count, _ := newNetEasy("稻香").execute()
+	songs, count, _ := newNetEasy("稻香").Execute()
 	fmt.Println(count)
 	fmt.Println(songs)
 }

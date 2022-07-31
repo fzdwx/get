@@ -3,7 +3,9 @@ package utils
 import (
 	"fmt"
 	"io"
+	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 )
 
@@ -79,4 +81,21 @@ func FormatBytes(bytes int64) string {
 	result := fmt.Sprintf("%.2f", value)
 	result = strings.TrimSuffix(result, ".00")
 	return fmt.Sprintf("%s%s", result, unit)
+}
+
+func ToInt(val string) int {
+	i, err := strconv.Atoi(val)
+	if err != nil {
+		return 0
+	}
+	return i
+}
+
+func GetSize(url string) int64 {
+	resp, err := http.Get(url)
+	if err != nil {
+		return 0
+	}
+
+	return resp.ContentLength
 }

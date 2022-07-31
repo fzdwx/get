@@ -27,23 +27,26 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var name string
+var kuWo bool
+var netEasy bool
 
 // mscCmd represents the msc command
 var mscCmd = &cobra.Command{
 	Use:     "msc [song name]",
 	Aliases: []string{"mc"},
 	Short:   "下载音乐.",
-	Long:    `这是一个下载音乐的子命令,目前只支持网易云平台.`,
+	Long:    `这是一个下载音乐的子命令,目前只支持酷我以及网易云平台,默认使用酷我.`,
 	Example: `get mc 不能说的秘密
-get msc 我的天空	`,
+get msc 我的天空
+get msc 平凡之路 -w # 使用网易云
+get msc 七里香 -k   # 酷我`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			cmd.Usage()
 			return
 		}
 
-		msc.Download(args[0])
+		msc.Download(buildConfig(args[0]))
 	},
 }
 
@@ -59,4 +62,22 @@ func init() {
 	// Cobra supports local flags which will only execx when this command
 	// is called directly, e.g.:
 	//mscCmd.Flags().StringVarP(&name, "song", "s", "", "The name of the song to download")
+	mscCmd.Flags().BoolVarP(&kuWo, "kuwo", "k", true, "[默认]使用酷我平台下载音乐")
+	mscCmd.Flags().BoolVarP(&netEasy, "neteasy", "w", false, "使用网易云平台下载音乐")
+}
+
+func buildConfig(name string) msc.DownloadConfig {
+	var p msc.Platform
+	if kuWo {
+		p = msc.KuWoP
+	}
+
+	if netEasy {
+		p = msc.NetEasyP
+	}
+
+	return msc.DownloadConfig{
+		Name:     name,
+		Platform: p,
+	}
 }
