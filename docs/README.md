@@ -53,25 +53,47 @@
 
 ## 安装
 
-在终端中运行以下命令，您就可以开始了！
-
-**Windows**
-
-```powershell
-iwr instl.sh/fzdwx/get/windows | iex
-```
-
-**macOS**
-
 ```bash
-curl -sSL instl.sh/fzdwx/get/macos | bash
+go install github.com/fzdwx/get@latest
 ```
 
-**Linux**
+[//]: # (在终端中运行以下命令，您就可以开始了！)
 
-```bash
-curl -sSL instl.sh/fzdwx/get/linux | bash
-```
+[//]: # ()
+
+[//]: # (**Windows**)
+
+[//]: # ()
+
+[//]: # (```powershell)
+
+[//]: # (iwr instl.sh/fzdwx/get/windows | iex)
+
+[//]: # (```)
+
+[//]: # ()
+
+[//]: # (**macOS**)
+
+[//]: # ()
+
+[//]: # (```bash)
+
+[//]: # (curl -sSL instl.sh/fzdwx/get/macos | bash)
+
+[//]: # (```)
+
+[//]: # ()
+
+[//]: # (**Linux**)
+
+[//]: # ()
+
+[//]: # (```bash)
+
+[//]: # (curl -sSL instl.sh/fzdwx/get/linux | bash)
+
+[//]: # (```)
 
 ## 下载音乐
 
