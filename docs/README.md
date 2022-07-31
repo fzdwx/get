@@ -79,6 +79,11 @@ curl -sSL instl.sh/fzdwx/get/linux | bash
 
 示例: `get mc 我的天空`
 
+Flag:
+
+1. `-k` 使用酷我(默认)
+2. `-w` 使用网易云
+
 ![screen](https://user-images.githubusercontent.com/65269574/181920199-14fe4227-e522-4d9a-a1bb-afb3adcecfe8.gif)
 
 ## Git相关命令
