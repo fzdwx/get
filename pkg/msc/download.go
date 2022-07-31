@@ -21,6 +21,12 @@ func Download(config DownloadConfig) {
 		spinnerInfo.Fail(err.Error())
 		return
 	}
+
+	if songsCount == 0 {
+		spinnerInfo.Warning("没有获取到歌曲,请换个关键词再试试.")
+		return
+	}
+
 	spinnerInfo.Info(fmt.Sprintf("总共获取到了%d条歌曲", songsCount))
 
 	m, options := songsToMap(songs)

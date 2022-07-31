@@ -71,9 +71,10 @@ func collect(mappers []SongsMapper) []Songs {
 				if err != nil {
 					wg.Done()
 					pterm.Error.Printfln("download %s fail", mapper.name())
+				} else {
+					songCh <- *mscSongs
 				}
 
-				songCh <- *mscSongs
 			}(mappers[i])
 		}
 	}()

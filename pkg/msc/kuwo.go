@@ -41,7 +41,7 @@ type (
 )
 
 const (
-	kuWoSearchUrl = "https://search.kuwo.cn/r.s?client=kt&all=$%s&pn=$%d&rn=20&vipver=1&ft=music&encoding=utf8&rformat=json&mobi=1"
+	kuWoSearchUrl = "https://search.kuwo.cn/r.s?client=kt&all=%s&pn=%d&rn=20&vipver=1&ft=music&encoding=utf8&rformat=json&mobi=1"
 	kuWoDetailUrl = `https://www.kuwo.cn/api/v1/www/music/playUrl?mid=%s&type=1`
 )
 
