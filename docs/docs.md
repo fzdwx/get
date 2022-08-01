@@ -15,18 +15,15 @@ get
 ```bash
 get mc 稻香
 get clone fzdwx/get
-get date
-get date --format 20060102
-get time
-get time --live
+
 ```
 
 ## Flags
 |Flag|Usage|
 |----|-----|
-|`--debug`|enable debug messages|
-|`--disable-update-checks`|disables update checks|
-|`--raw`|print unstyled raw output (set it if output is written to a file)|
+|`--debug`|启用调试消息|
+|`--disable-update-checks`|禁用更新检查|
+|`--raw`|打印无样式的原始输出（如果将输出写入文件，则设置它）|
 
 ## Commands
 |Command|Usage|
@@ -242,9 +239,9 @@ get msc 七里香 -k   # 酷我
 ## Flags
 |Flag|Usage|
 |----|-----|
-|`-k, --kuwo`|[默认]使用酷我平台下载音乐 (default true)|
+|`-k, --kuwo`|使用酷我平台下载音乐 (default true)|
 |`-w, --neteasy`|使用网易云平台下载音乐|
 
 
 ---
-> **Documentation automatically generated with [PTerm](https://github.com/pterm/cli-template) on 31 July 2022**
+> **Documentation automatically generated with [PTerm](https://github.com/pterm/cli-template) on 01 August 2022**
