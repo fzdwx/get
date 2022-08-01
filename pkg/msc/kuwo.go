@@ -2,9 +2,9 @@ package msc
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"github.com/fzdwx/get/pkg/utils"
+	"github.com/rotisserie/eris"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -54,23 +54,22 @@ func newKuWo(name string) Request {
 
 func (k *kuWo) Execute() ([]Songs, int, error) {
 	url := k.url()
-
 	if utils.IsDebug() {
-		fmt.Fprintf(os.Stderr, "url:%s\n", url)
+		fmt.Fprintf(os.Stderr, "search url:%s\n", url)
 	}
 
 	resp, err := http.Get(url)
 	if err != nil {
-		return nil, 0, err
+		return nil, 0, eris.Wrapf(err, "kuWo search fail. url: %s", url)
 	}
 
 	var result kuWoSearchResponse
 	body := utils.ReadBody(resp.Body)
 	err = json.Unmarshal(body, &result)
-
 	if err != nil {
-		return nil, 0, err
+		return nil, 0, eris.Wrapf(err, "format kuWo search json fail. %s", string(body))
 	}
+
 	var mappers []SongsMapper
 	for _, abs := range result.AbsList {
 		mappers = append(mappers, SongsMapper(abs))
@@ -99,20 +98,25 @@ func (a absEntity) name() string {
 }
 
 func (a absEntity) mapper() (*Songs, error) {
-	resp, err := http.Get(fmt.Sprintf(kuWoDetailUrl, a.Id))
+	url := fmt.Sprintf(kuWoDetailUrl, a.Id)
+	if utils.IsDebug() {
+		fmt.Fprintf(os.Stderr, "data url:%s\n", url)
+	}
+
+	resp, err := http.Get(url)
 	if err != nil {
-		return nil, err
+		return nil, eris.Wrapf(err, "get kuWo music fail. url: %s", url)
 	}
 
 	var result kuWoDataResponse
 	body := utils.ReadBody(resp.Body)
 	err = json.Unmarshal(body, &result)
 	if err != nil {
-		return nil, err
+		return nil, eris.Wrapf(err, "format kuWo data json fail. %s", string(body))
 	}
 
 	if !(result.Msg == "success") {
-		return nil, errors.New("not found songs")
+		return nil, eris.New(fmt.Sprintf("not found kuWo songs. url: %s", url))
 	}
 
 	return &Songs{

@@ -42,6 +42,7 @@ func (c cmdWithStderr) Output() ([]byte, error) {
 	if utils.IsDebug() {
 		_ = printArgs(os.Stderr, c.Cmd.Args)
 	}
+
 	if c.Cmd.Stderr != nil {
 		return c.Cmd.Output()
 	}
@@ -58,15 +59,18 @@ func (c cmdWithStderr) Run() error {
 	if utils.IsDebug() {
 		_ = printArgs(os.Stderr, c.Cmd.Args)
 	}
+
 	if c.Cmd.Stderr != nil {
 		return c.Cmd.Run()
 	}
 	errStream := &bytes.Buffer{}
 	c.Cmd.Stderr = errStream
 	err := c.Cmd.Run()
+
 	if err != nil {
 		err = &CmdError{errStream, c.Cmd.Args, err}
 	}
+
 	return err
 }
 

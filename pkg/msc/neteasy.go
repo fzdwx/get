@@ -2,10 +2,11 @@ package msc
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"github.com/fzdwx/get/pkg/utils"
+	"github.com/rotisserie/eris"
 	"net/http"
+	"os"
 )
 
 type (
@@ -53,16 +54,21 @@ func newNetEasy(name string) Request {
 }
 
 func (n *netEasy) Execute() ([]Songs, int, error) {
-	resp, err := http.Get(n.url())
+	url := n.url()
+	if utils.IsDebug() {
+		fmt.Fprintf(os.Stderr, "search url:%s\n", url)
+	}
+
+	resp, err := http.Get(url)
 	if err != nil {
-		return nil, 0, err
+		return nil, 0, eris.Wrapf(err, "netEasy search fail. url: %s", url)
 	}
 
 	var result netEasySearchResponse
 	body := utils.ReadBody(resp.Body)
 	err = json.Unmarshal(body, &result)
 	if err != nil {
-		return nil, 0, err
+		return nil, 0, eris.Wrapf(err, "format netEasy search json fail. %s", string(body))
 	}
 
 	var mappers []SongsMapper
@@ -93,20 +99,25 @@ func (ns netEasySong) name() string {
 }
 
 func (ns netEasySong) mapper() (*Songs, error) {
-	resp, err := http.Get(fmt.Sprintf(netEasyDetailUrl, ns.Id, ns.Id))
+	url := fmt.Sprintf(netEasyDetailUrl, ns.Id, ns.Id)
+	if utils.IsDebug() {
+		fmt.Fprintf(os.Stderr, "data url:%s\n", url)
+	}
+
+	resp, err := http.Get(url)
 	if err != nil {
-		return nil, err
+		return nil, eris.Wrapf(err, "get netEasy music fail. url: %s", url)
 	}
 
 	var result netDataResponse
 	body := utils.ReadBody(resp.Body)
 	err = json.Unmarshal(body, &result)
 	if err != nil {
-		return nil, err
+		return nil, eris.Wrapf(err, "format netEasy data json fail. %s", string(body))
 	}
 
 	if len(result.Data) < 1 {
-		return nil, errors.New("not found songs")
+		return nil, eris.New(fmt.Sprintf("not found netEasy songs. url: %s", url))
 	}
 
 	data := result.Data[0]

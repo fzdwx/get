@@ -41,6 +41,7 @@ type (
 		// the song Size(unit is byte)
 		Size int64 `json:"size"`
 		// the song EncodeType
+		// e.g: .mp3
 		EncodeType string `json:"encodeType"`
 	}
 
