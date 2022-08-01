@@ -62,7 +62,7 @@ func init() {
 	// Cobra supports local flags which will only execx when this command
 	// is called directly, e.g.:
 	//mscCmd.Flags().StringVarP(&name, "song", "s", "", "The name of the song to download")
-	mscCmd.Flags().BoolVarP(&kuWo, "kuwo", "k", true, "[默认]使用酷我平台下载音乐")
+	mscCmd.Flags().BoolVarP(&kuWo, "kuwo", "k", true, "使用酷我平台下载音乐")
 	mscCmd.Flags().BoolVarP(&netEasy, "neteasy", "w", false, "使用网易云平台下载音乐")
 }
 

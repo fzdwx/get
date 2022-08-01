@@ -15,11 +15,8 @@ var rootCmd = &cobra.Command{
 	Long:  `这是一个下载 "CLI" 应用程序,它可以下载一些音乐或其他一些东西.`,
 	Example: `get mc 稻香
 get clone fzdwx/get
-get date
-get date --format 20060102
-get time
-get time --live`,
-	Version: "v0.0.7", // <---VERSION---> Updating this version, will also create a new GitHub release.
+`,
+	Version: "v0.0.8", // <---VERSION---> Updating this version, will also create a new GitHub release.
 	// Uncomment the following lines if your bare application has an action associated with it:
 	// RunE: func(cmd *cobra.Command, args []string) error {
 	// 	// Your code here
@@ -53,9 +50,9 @@ func Execute() {
 func init() {
 	// Adds global flags for PTerm settings.
 	// Fill the empty strings with the shorthand variant (if you like to have one).
-	rootCmd.PersistentFlags().BoolVarP(&pterm.PrintDebugMessages, "debug", "", false, "enable debug messages")
-	rootCmd.PersistentFlags().BoolVarP(&pterm.RawOutput, "raw", "", false, "print unstyled raw output (set it if output is written to a file)")
-	rootCmd.PersistentFlags().BoolVarP(&pcli.DisableUpdateChecking, "disable-update-checks", "", false, "disables update checks")
+	rootCmd.PersistentFlags().BoolVarP(&pterm.PrintDebugMessages, "debug", "", false, "启用调试消息")
+	rootCmd.PersistentFlags().BoolVarP(&pterm.RawOutput, "raw", "", false, "打印无样式的原始输出（如果将输出写入文件，则设置它）")
+	rootCmd.PersistentFlags().BoolVarP(&pcli.DisableUpdateChecking, "disable-update-checks", "", false, "禁用更新检查")
 
 	// Use https://github.com/pterm/pcli to style the output of cobra.
 	pcli.SetRepo("fzdwx/get")
