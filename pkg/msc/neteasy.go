@@ -76,7 +76,7 @@ func (n *netEasy) Execute() ([]Songs, int, error) {
 		mappers = append(mappers, SongsMapper(song))
 	}
 
-	return collect(mappers), result.Result.SongCount, nil
+	return Collect(mappers), result.Result.SongCount, nil
 }
 
 func (n *netEasy) url() string {

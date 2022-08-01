@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/fzdwx/get/pkg/utils"
 	"github.com/pterm/pterm"
+	"github.com/rotisserie/eris"
 	"sync"
 )
 
@@ -23,8 +24,6 @@ type (
 		mapper() (*Songs, error)
 		name() string
 	}
-
-	Platform int
 
 	DownloadConfig struct {
 		Name     string
@@ -50,6 +49,9 @@ type (
 	}
 )
 
+// Platform the music service provider
+type Platform int
+
 const (
 	NetEasyP Platform = 1
 	KuWoP    Platform = 2
@@ -59,7 +61,9 @@ func (s Songs) Prompt(i int) string {
 	return utils.AdapterScreenTruncate(fmt.Sprintf("%d. %s(%s) - %s", i, s.Name, utils.FormatBytes(s.Size), utils.MappingArtName(s.Artists[0].name)))
 }
 
-func collect(mappers []SongsMapper) []Songs {
+// Collect songs
+// async call SongsMapper#mapper() converted to Songs
+func Collect(mappers []SongsMapper) []Songs {
 	songCh := make(chan Songs)
 	wg := sync.WaitGroup{}
 	wg.Add(len(mappers))
@@ -70,8 +74,8 @@ func collect(mappers []SongsMapper) []Songs {
 			go func(mapper SongsMapper) {
 				mscSongs, err := mapper.mapper()
 				if err != nil {
+					pterm.Error.Printfln(eris.ToString(err, true))
 					wg.Done()
-					pterm.Error.Printfln("download %s fail", mapper.name())
 				} else {
 					songCh <- *mscSongs
 				}
@@ -85,8 +89,8 @@ func collect(mappers []SongsMapper) []Songs {
 			select {
 			case s, ok := <-songCh:
 				if ok {
-					wg.Done()
 					songs = append(songs, s)
+					wg.Done()
 				} else {
 					break
 				}

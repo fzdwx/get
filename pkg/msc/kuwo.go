@@ -75,7 +75,7 @@ func (k *kuWo) Execute() ([]Songs, int, error) {
 		mappers = append(mappers, SongsMapper(abs))
 	}
 
-	return collect(mappers), utils.ToInt(result.Total), nil
+	return Collect(mappers), utils.ToInt(result.Total), nil
 }
 
 func (k *kuWo) url() string {
