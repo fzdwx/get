@@ -244,4 +244,4 @@ get msc 七里香 -k   # 酷我
 
 
 ---
-> **Documentation automatically generated with [PTerm](https://github.com/pterm/cli-template) on 01 August 2022**
+> **Documentation automatically generated with [PTerm](https://github.com/pterm/cli-template) on 02 August 2022**
