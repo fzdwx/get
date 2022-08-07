@@ -1,17 +1,19 @@
 package ptermx
 
-import "github.com/pterm/pterm"
+import (
+	"github.com/fzdwx/infinite/components"
+)
 
 type ProgressWriter struct {
-	p *pterm.ProgressbarPrinter
+	p *components.Progress
 }
 
 func (pw ProgressWriter) Write(bytes []byte) (n int, err error) {
 	n = len(bytes)
-	pw.p.Add(n)
+	pw.p.Incr(int64(n))
 	return
 }
 
-func NewProgressWriter(p *pterm.ProgressbarPrinter) ProgressWriter {
+func NewProgressWriter(p *components.Progress) ProgressWriter {
 	return ProgressWriter{p: p}
 }
