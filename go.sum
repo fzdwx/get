@@ -66,8 +66,8 @@ github.com/duke-git/lancet/v2 v2.1.4 h1:DmEz7O1U8nxFAf65CyIwKqFky98U0GbKdrNy5yN6
 github.com/duke-git/lancet/v2 v2.1.4/go.mod h1:5Nawyf/bK783rCiHyVkZLx+jj8028oVVjLOrC21ZONA=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
-github.com/fzdwx/infinite v0.3.6 h1:VlMNHQCk9Ussg7LeRSoAw0uH3rHWBaGIJtKOt2HQy3g=
-github.com/fzdwx/infinite v0.3.6/go.mod h1:nTjfw+EMM72D0m01OFxaW+7cvGdyWO89V9hyGwJCLXE=
+github.com/fzdwx/infinite v0.4.2 h1:Dn/52AUZxYHAxgscl2/2sTDNXy+WN1opjP2PqnP+5ms=
+github.com/fzdwx/infinite v0.4.2/go.mod h1:VX93yH6cs3yIwLednogbVXgKUewI14hoQR5emCFq8Lk=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
 github.com/go-kit/kit v0.8.0/go.mod h1:xBxKIO96dXMWWy0MnWVtmwkA9/13aqxPnvrjFYMA2as=

@@ -16,7 +16,7 @@ var rootCmd = &cobra.Command{
 	Example: `get mc 稻香
 get clone fzdwx/get
 `,
-	Version: "v0.0.8", // <---VERSION---> Updating this version, will also create a new GitHub release.
+	Version: "v0.0.9", // <---VERSION---> Updating this version, will also create a new GitHub release.
 	// Uncomment the following lines if your bare application has an action associated with it:
 	// RunE: func(cmd *cobra.Command, args []string) error {
 	// 	// Your code here

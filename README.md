@@ -106,7 +106,7 @@ Flag:
 1. `-k` 使用酷我(默认)
 2. `-w` 使用网易云
 
-![screen](https://user-images.githubusercontent.com/65269574/181920199-14fe4227-e522-4d9a-a1bb-afb3adcecfe8.gif)
+![demo](https://user-images.githubusercontent.com/65269574/183438669-f101d4bc-1fd6-46ed-9047-f91c93b218cc.gif)
 
 ## Git相关命令
 
@@ -116,7 +116,8 @@ Flag:
 
 示例: `get clone fzdwx/sky`
 
-![screen](https://user-images.githubusercontent.com/65269574/181920482-c3c9ed9f-86bb-4e1a-a388-14d16a05e138.gif)
+![demo](https://user-images.githubusercontent.com/65269574/183439217-e0f7a6a1-55ef-47cd-a155-a8f642ae84fa.gif)
+
 
 ---
 **仅供个人学习使用**

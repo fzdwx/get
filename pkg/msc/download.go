@@ -3,7 +3,6 @@ package msc
 import (
 	"fmt"
 	"github.com/duke-git/lancet/v2/slice"
-	"github.com/fzdwx/get/pkg/ptermx"
 	"github.com/fzdwx/get/pkg/utils"
 	inf "github.com/fzdwx/infinite"
 	"github.com/fzdwx/infinite/color"
@@ -12,7 +11,6 @@ import (
 	"github.com/fzdwx/infinite/components/selection/multiselect"
 	"github.com/fzdwx/infinite/components/spinner"
 	"github.com/fzdwx/infinite/style"
-	"io"
 	"net/http"
 	"os"
 )
@@ -74,32 +72,43 @@ func getRequestFunc(p Platform) func(name string) Request {
 }
 
 func process(selectedSongs []Songs) error {
-	err := progress.NewGroupWithCount(len(selectedSongs)).AppendRunner(func(progress *components.Progress) func() {
-		return func() {
-			s := selectedSongs[progress.Id-1]
-			resp, err := http.Get(s.DownloadUrl)
-			defer resp.Body.Close()
-			if err != nil {
-				// todo handle err
-				return
-			}
-
-			file, err := os.OpenFile(fmt.Sprintf("%s%s", utils.NormalizeFileName(s.Name), s.EncodeType), os.O_CREATE|os.O_WRONLY, 0o777)
-			defer file.Close()
-			if err != nil {
-				// todo handle err
-				return
-			}
-
-			progress.
-				WithTotal(resp.ContentLength).
-				WithPercentAgeFunc(func(total int64, current int64, percent float64) string {
-					return fmt.Sprintf(" %d/%d", current, total)
+	err := progress.NewGroupWithCount(len(selectedSongs)).AppendRunner(func(pro *components.Progress) func() {
+		s := selectedSongs[pro.Id-1]
+		resp, err := http.Get(s.DownloadUrl)
+		if err != nil {
+			resp.Body.Close()
+			return func() {
+				pro.WithDoneView(func() string {
+					return fmt.Sprintf("get error: %s", err)
 				})
+			}
+		}
 
-			_, err = io.Copy(io.MultiWriter(file, ptermx.NewProgressWriter(progress)), resp.Body)
+		pro.WithTotal(resp.ContentLength)
+
+		fileName := fmt.Sprintf("%s%s", utils.NormalizeFileName(s.Name), s.EncodeType)
+		dest, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0o777)
+		if err != nil {
+			dest.Close()
+			return func() {
+				pro.WithDoneView(func() string {
+					return fmt.Sprintf("open dest error: %s", err)
+				})
+			}
+		}
+		return func() {
+			defer resp.Body.Close()
+			defer dest.Close()
+
+			pro.WithDoneView(func() string {
+				return fmt.Sprintf("%s download success", fileName)
+			})
+
+			_, err := progress.StartTransfer(resp.Body, dest, pro)
 			if err != nil {
-				// todo handle err
+				pro.WithDoneView(func() string {
+					return fmt.Sprintf("transfer error: %s", err)
+				})
 			}
 		}
 	}).Display()
