@@ -74,29 +74,29 @@ func getRequestFunc(p Platform) func(name string) Request {
 func process(selectedSongs []Songs) error {
 	err := progress.NewGroupWithCount(len(selectedSongs)).AppendRunner(func(pro *components.Progress) func() {
 		s := selectedSongs[pro.Id-1]
-		resp, err := http.Get(s.DownloadUrl)
-		if err != nil {
-			resp.Body.Close()
-			return func() {
+		return func() {
+
+			resp, err := http.Get(s.DownloadUrl)
+			if err != nil {
+				resp.Body.Close()
 				pro.WithDoneView(func() string {
 					return fmt.Sprintf("get error: %s", err)
 				})
+				return
 			}
-		}
 
-		pro.WithTotal(resp.ContentLength)
+			pro.WithTotal(resp.ContentLength)
 
-		fileName := fmt.Sprintf("%s%s", utils.NormalizeFileName(s.Name), s.EncodeType)
-		dest, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0o777)
-		if err != nil {
-			dest.Close()
-			return func() {
+			fileName := fmt.Sprintf("%s%s", utils.NormalizeFileName(s.Name), s.EncodeType)
+			dest, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY, 0o777)
+			if err != nil {
+				dest.Close()
 				pro.WithDoneView(func() string {
 					return fmt.Sprintf("open dest error: %s", err)
 				})
+				return
 			}
-		}
-		return func() {
+
 			defer resp.Body.Close()
 			defer dest.Close()
 
@@ -104,7 +104,7 @@ func process(selectedSongs []Songs) error {
 				return fmt.Sprintf("%s download success", fileName)
 			})
 
-			_, err := progress.StartTransfer(resp.Body, dest, pro)
+			_, err = progress.StartTransfer(resp.Body, dest, pro)
 			if err != nil {
 				pro.WithDoneView(func() string {
 					return fmt.Sprintf("transfer error: %s", err)
