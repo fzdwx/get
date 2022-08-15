@@ -26,8 +26,8 @@ func Download(config DownloadConfig) {
 	)
 
 	_ = inf.NewSpinner(
-		spinner.WithPrompt("  获取歌曲列表..."),
-		spinner.WithFunc(func(spinner *spinner.Spinner) {
+		spinner.WithPrompt("  获取歌曲列表...")).
+		Display(func(spinner *spinner.Spinner) {
 			songs, songsCount, err = request.Execute()
 			if err != nil {
 				spinner.Finish(err.Error())
@@ -40,8 +40,7 @@ func Download(config DownloadConfig) {
 			}
 
 			spinner.Finish(fmt.Sprintf("总共获取到了%d条歌曲", songsCount))
-		}),
-	).Display()
+		})
 
 	options := slice.Map[Songs, string](songs, func(index int, item Songs) string {
 		return item.Prompt(index)
