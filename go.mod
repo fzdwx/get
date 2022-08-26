@@ -3,7 +3,7 @@ module github.com/fzdwx/get
 go 1.18
 
 require (
-	github.com/duke-git/lancet/v2 v2.1.4
+	github.com/duke-git/lancet/v2 v2.1.5
 	github.com/fzdwx/infinite v0.8.2
 	github.com/pterm/pcli v0.4.6
 	github.com/pterm/pterm v0.12.45
