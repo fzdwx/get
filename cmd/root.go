@@ -16,7 +16,7 @@ var rootCmd = &cobra.Command{
 	Example: `get mc 稻香
 get clone fzdwx/get
 `,
-	Version: "v0.0.10", // <---VERSION---> Updating this version, will also create a new GitHub release.
+	Version: "v0.10.1", // <---VERSION---> Updating this version, will also create a new GitHub release.
 	// Uncomment the following lines if your bare application has an action associated with it:
 	// RunE: func(cmd *cobra.Command, args []string) error {
 	// 	// Your code here
@@ -40,11 +40,11 @@ func Execute() {
 
 	// Execute cobra
 	if err := rootCmd.Execute(); err != nil {
-		pcli.CheckForUpdates()
+		//pcli.CheckForUpdates()
 		os.Exit(1)
 	}
 
-	pcli.CheckForUpdates()
+	//pcli.CheckForUpdates()
 }
 
 func init() {
