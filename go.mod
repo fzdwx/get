@@ -6,7 +6,7 @@ require (
 	github.com/duke-git/lancet/v2 v2.1.6
 	github.com/fzdwx/infinite v0.8.7
 	github.com/pterm/pcli v0.4.6
-	github.com/pterm/pterm v0.12.47
+	github.com/pterm/pterm v0.12.48
 	github.com/rotisserie/eris v0.5.4
 	github.com/spf13/cobra v1.5.0
 )
