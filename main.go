@@ -26,7 +26,7 @@ func main() {
 		return
 	}
 	if version {
-		fmt.Printf("get version: %s", versionStr)
+		fmt.Printf("get   version: %s", versionStr)
 	}
 
 	msc.Download(buildConfig(os.Args[1]))
